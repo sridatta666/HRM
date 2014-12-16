@@ -14,7 +14,7 @@ display:block;
 margin-right: auto;
 margin-left: auto;
 margin-top: 15%;
-background-color: green;
+background-color: teal;
 width: 50%;
 height: auto;
 padding: 10px;
@@ -34,9 +34,19 @@ padding-bottom:50px;
 height: auto;
 
 }
-form{text-align: center;}
+form{
+text-align: center;
+}
+label{font-family: sans-serif;
+font-style: normal;
+font-size-adjust: inherit;
+}
+input{
+border-radius: 5px;
+}
 #submitbtn{
 	border-radius: 5px;
+	
 }
 </style>
 </head>
@@ -44,7 +54,7 @@ form{text-align: center;}
 <div class="container">
 	<div class="loginbox">
 		<h3>Login</h3><br>
-		<form method="post" action="#">
+		<form method="post" action="HomePage">
 			<label for="Username">Username </label><input id="Username" name="Username" type="text"></input><br><br>
 			<label for="Password">Password </label><input id="Password" name="Password" type="password"></input><br><br>
 		    <input id="submitbtn" type="submit" name="submitbtn" value="Login"></input>
