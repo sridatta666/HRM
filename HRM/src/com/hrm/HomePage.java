@@ -22,12 +22,14 @@ public class HomePage extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		res.getWriter().println("Welcome to the HomePage");
+		res.getWriter().println("Welcome Admin!!"+req.getParameter("Username"));
+		
 	}
 
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		res.getWriter().println("Welcome to the HomePage");
+		res.getWriter().println("Welcome Admin!!"+req.getParameter("Username"));
+		req.getRequestDispatcher("AdminPage.html");
 	}
 
 }

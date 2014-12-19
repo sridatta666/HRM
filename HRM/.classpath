@@ -13,8 +13,5 @@
 	</classpathentry>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry exported="true" kind="lib" path="D:/jar files used in projects/servlet-api.jar"/>
-	<classpathentry exported="true" kind="lib" path="D:/jar files used in projects/standard.jar"/>
-	<classpathentry kind="lib" path="C:/Users/TSUSER/Desktop/User666/jar files used in projects/mysql-connector-java-5.1.5-bin.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

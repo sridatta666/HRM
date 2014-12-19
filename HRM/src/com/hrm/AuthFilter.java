@@ -19,7 +19,7 @@ public class AuthFilter implements Filter {
 	Connection conn;
 	Statement stm;
 	ResultSet rs;
-	
+	FilterConfig fConfig;
     
     public AuthFilter() {
          // TODO Auto-generated constructor stub
@@ -34,33 +34,46 @@ public class AuthFilter implements Filter {
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException{
 	    try{
 		Class.forName("com.mysql.jdbc.Driver");
-	    conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/user666","root","root");
+	    conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/hrm","root","");
 	    stm=conn.createStatement();
-	   rs=stm.executeQuery("Select username from userinfo where username='req.getParameter('Username')'");
-	   while(rs.next()){
-	   System.out.println(rs.getString("username"));
+		rs=stm.executeQuery("Select * from userinfo where username='"+req.getParameter("Username")+"'");
+
 	   
-	   if(rs.getString("role").matches("Administrator"))
-	    {
-	    	
+		   if(rs.next()){
+	   if(rs.getString("password").matches(req.getParameter("Password")))
+	    {	
+		   if(rs.getString("role").matches("Administrator"))
+		   {
 	    	chain.doFilter(req, res);	
-	    }
+		   }
+		   else
+		   {
+			   ////for other roles
+			req.getRequestDispatcher("Welcome.html");
+		   }
+		}
 	    else{
-	    	res.getWriter().println("Invalid Username"); 
-	    	req.getRequestDispatcher("Welcome.html").include(req, res);
-	    	
-	    	
+	    	res.getWriter().println("Invalid Credentials");  	
+	    	req.getRequestDispatcher("Welcome.html").include(req, res);    
 	    }
-	   }
+	  
+		   
+		   }
+		   
+		   else{
+	   	   
+		   res.getWriter().println("No employee with this username!!");
+		   req.getRequestDispatcher("Welcome.html").include(req, res);
+		   }
 	    }catch(ClassNotFoundException |SQLException e){
 	    	e.printStackTrace();
 	    }
-		
+	    
 
 	}
 
 		public void init(FilterConfig fConfig) throws ServletException {
-		  
+		  this.fConfig=fConfig;
 	}
 
 }
