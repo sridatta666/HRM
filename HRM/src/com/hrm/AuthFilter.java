@@ -34,7 +34,7 @@ public class AuthFilter implements Filter {
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException{
 	    try{
 		Class.forName("com.mysql.jdbc.Driver");
-	    conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/hrm","root","");
+	    conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/user666","root","");
 	    stm=conn.createStatement();
 		rs=stm.executeQuery("Select * from userinfo where username='"+req.getParameter("Username")+"'");
 
